@@ -1,8 +1,11 @@
 .PHONY: deploy dist/client.js deps
 
+DEPLOY_DEST=/srv/http/mcallister
+
 $(shell mkdir -p deploy)
 
 deploy: deploy/index.js deploy/index.html deploy/index.css
+	cp deploy/* $(DEPLOY_DEST)
 
 deploy/index.html: frontend/index.html
 	cp $< $@
