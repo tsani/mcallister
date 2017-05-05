@@ -3,7 +3,7 @@ Description=Books Renewal Webservice
 Wants=nginx.service
 
 [Service]
-ExecStart=/home/mcallister/mcallister/bin/mcallister
+ExecStart=/home/mcallister/mcallister/bin/mcallister server ""
 WorkingDirectory=/home/mcallister/mcallister
 
 [Install]
