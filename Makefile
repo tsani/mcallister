@@ -7,7 +7,10 @@ $(shell mkdir -p deploy)
 deploy: bin/mcallister deploy/index.js deploy/index.html deploy/index.css
 	cp deploy/* $(DEPLOY_DEST)
 
-bin/mcallister:
+dist/client.js: bin/mcallister
+	cabal run client $@
+
+bin/mcallister: deps
 	cabal build
 	cp dist/build/mcallister/mcallister bin
 
@@ -19,9 +22,6 @@ deploy/index.css: frontend/index.css
 
 deploy/index.js: dist/client.js frontend/index.js
 	cat $^ > $@
-
-dist/client.js: deps
-	cabal run client $@
 
 deps:
 	cabal update
