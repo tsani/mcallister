@@ -4,7 +4,8 @@ ssh jerrington.me bash <<EOF
 sudo su-mcallister
 cd mcallister
 git pull
+sudo systemctl stop mcallister-server
 make $@
-sudo systemctl restart mcallister-server
+sudo systemctl start mcallister-server
 sudo systemctl status mcallister-server
 EOF
