@@ -1,0 +1,10 @@
+[Unit]
+Description=Books Renewal Webservice
+Wants=nginx.service
+
+[Service]
+ExecStart=/home/mcallister/mcallister/bin/mcallister
+WorkingDirectory=/home/mcallister/mcallister
+
+[Install]
+WantedBy=default.target

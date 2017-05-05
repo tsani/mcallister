@@ -1,11 +1,15 @@
-.PHONY: deploy dist/client.js deps
+.PHONY: deploy dist/client.js deps bin/mcallister
 
 DEPLOY_DEST=/srv/http/mcallister
 
 $(shell mkdir -p deploy)
 
-deploy: deploy/index.js deploy/index.html deploy/index.css
+deploy: bin/mcallister deploy/index.js deploy/index.html deploy/index.css
 	cp deploy/* $(DEPLOY_DEST)
+
+bin/mcallister:
+	cabal build
+	cp dist/build/mcallister/mcallister bin
 
 deploy/index.html: frontend/index.html
 	cp $< $@
