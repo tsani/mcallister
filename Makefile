@@ -12,7 +12,8 @@ dist/client.js: bin/mcallister
 
 bin/mcallister: deps
 	cabal build
-	cp dist/build/mcallister/mcallister bin/mcallister
+	mkdir -p bin
+	cp dist/build/mcallister/mcallister bin/
 
 deploy/index.html: frontend/index.html
 	cp $< $@
