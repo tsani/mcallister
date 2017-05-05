@@ -17,6 +17,7 @@ import Servant.JS
 import Servant.JS.JQuery
 import System.Environment ( getArgs )
 import Network.Wai.Handler.Warp ( run )
+import Network.Wai.Middleware.RequestLogger ( logStdoutDev )
 
 main :: IO ()
 main = do
@@ -27,7 +28,7 @@ main = do
       writeJSForAPI api (jqueryWith (def { urlPrefix = "/api" })) out
     "server" -> do
       statusVar <- newIORef (Status { status = False})
-      run 8086 (serve api (server statusVar))
+      run 8086 (logStdoutDev $ serve api (server statusVar))
     _ -> do
       putStrLn "unknown command!"
 
