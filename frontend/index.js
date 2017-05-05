@@ -12,7 +12,7 @@
             s = 'green'
           }
           else {
-            s = 'red;
+            s = 'red';
           }
           $('body').css('background-color', s);
         },
