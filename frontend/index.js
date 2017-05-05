@@ -9,12 +9,12 @@
         function(response) {
           var s = '';
           if(response.status) {
-            s = 'Someone is home!';
+            s = 'green'
           }
           else {
-            s = 'Nobody is home!';
+            s = 'red;
           }
-          status.text(s);
+          $('body').css('background-color', s);
         },
         function(errors) {
           console.log("uh oh! " + JSON.stringify(errors));
